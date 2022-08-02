@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
   <ModInfo>
-    <Name value="Better-modslot" />
+    <Name value="A20MoreModSlots" />
     <Description value="More mod slots" />
-    <Author value="SBSTN" />
-    <Version value="19.6" compat="A19,A18" />
+    <Author value="Agent14zbz" />
+    <Version value="A20.5"/>
   </ModInfo>
 </xml>

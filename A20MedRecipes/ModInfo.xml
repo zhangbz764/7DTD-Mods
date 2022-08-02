@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
 	<ModInfo>
-		<Name value="MakeAcid" />
-		<Description value="MakeAcid" />
-		<Author value="subquake" />
-		<Version value="A20.3" />
+		<Name value="A20MedRecipes" />
+		<Description value="A20 medical and acid recipes" />
+		<Author value="Agent14zbz" />
+		<Version value="A20.5" />
 		<Website value="" />
 	</ModInfo>
 </xml>
