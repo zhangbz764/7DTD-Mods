@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <!-- sets beaker monetary value down from 250 to 7 to balance out the new recipe. -->
+    <set xpath="/items/item[@name='toolBeaker']/property[@name='EconomicValue']/@value">5</set>
+</configs>

@@ -1,0 +1,1270 @@
+<configs>
+  <remove xpath="/windows/window[@name='windowCreative2']"/> -->
+
+    <append xpath="/windows"> 
+	<window name="windowCreative2" width="629" height="805" panel="Left" anchor_side="bottomright" normal_color="[iconColor]" cursor_area="true" controller="Creative2Window" >
+		<rect pos="0,-0">
+			<panel name="header" height="43" depth="0" disableautobackground="true">
+				<sprite depth="1" name="headerbackground" sprite="ui_game_panel_header"/>
+				<sprite depth="2" name="windowicon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_lightbulb"/>
+				<label style="header.name" text="{filter_crumb}" width="400" />
+				<label depth="2" width="130" height="32" text="{#format(localization('lblTotalItems'), int(result_count))}" font_size="32"
+					justify="right" anchor_side="right" pivot="right" anchor_run_once="false" anchor_offset="-10,0"/>
+			</panel>
+
+			<rect depth="2" name="searchControls" width="522" height="43" pos="101,-49">
+				<sprite depth="1" name="background" color="[darkGrey]" type="sliced" pos="-1,0" width="524" height="49" />
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="528" height="52" color="[black]" type="sliced" fillcenter="false"  />
+
+				<button depth="4" name="simplepickup" style="icon30px, press, hover" pos="30,-22" sprite="ui_game_symbol_hand" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="lblSimpleClick" sound="[paging_click]" />
+				<button depth="4" name="devblocks" style="icon30px, press, hover" pos="80,-22" sprite="ui_game_symbol_computer" defaultcolor="[disabledLabelColor]" pivot="center" tooltip_key="lblDevBlocks" sound="[paging_click]" console_enabled="false" />
+
+				<button depth="4" name="favorites" style="icon30px, press" pos="130,-22" sprite="server_favorite" pivot="center" sound="[paging_click]" tooltip_key="lblFavorites" collider_scale="1.5" />
+
+				<button depth="4" name="hideshapes" style="icon30px, press" pos="180,-22" sprite="ui_game_symbol_sight" pivot="center" sound="[paging_click]" tooltip_key="lblHideShapes" collider_scale="1.5" />
+
+				<panel pos="220,0" width="200" disableautobackground="true">
+					<sprite depth="4" name="searchIcon" style="icon30px" pos="0,-22" sprite="ui_game_symbol_search" pivot="center"/>
+					<textfield depth="5" pos="22,-7" width="140" height="30" name="searchInput" focus_on_open="true" search_field="true" close_group_on_tab="true" />
+				</panel>
+
+				<panel pos="405,0" width="104" height="43" disableautobackground="true">
+					<pager name="pager" pos="4,-6" />
+				</panel>
+			</rect>
+
+			<rect depth="2" name="categoryBar" width="43" height="718" pos="3,-49">
+				<sprite depth="1" name="background" color="[darkGrey]" type="sliced" pos="-1,0" width="48" height="722" />
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="52" height="727" color="[black]" type="sliced" fillcenter="false"  />
+
+				<grid depth="10" name="categories" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" repeat_content="false" controller="CategoryList" allow_unselect="true">
+					<!-- 形状 -->
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="woodShapes" spritename="ui_game_symbol_wood" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="brickShapes" spritename="ui_game_symbol_brick" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="corrugatedMetalShapes" spritename="ui_game_symbol_forge" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="concreteShapes" spritename="ui_game_symbol_cement" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="steelShapes" spritename="ui_game_symbol_ibeam" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="awningShapes" spritename="ui_game_symbol_map_campsite" />
+					<category_icon_creative_filter filtertype="autoshapes" filtertext="$other" spritename="ui_game_symbol_all_blocks" displayname_key="xuiShapesOther" />
+					<!-- 非形状--><sprite sprite="ui_game_symbol_subtract" style="icon32px" pivot="center" width="50" height="8" color="0,0,0,255"/>
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_building" categoryname="Building" spritename="ui_game_symbol_chair" displayname_key="xuiPropsBuilding" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_outdoor" categoryname="Outdoor" spritename="ui_game_symbol_tree" displayname_key="xuiPropsOutdoor" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_helpers" categoryname="LevelDesign" spritename="ui_game_symbol_tool_smithing" displayname_key="xuiHelpers" />
+					<!-- 球员拦网 --><sprite sprite="ui_game_symbol_subtract" style="icon32px" pivot="center" width="50" height="8" color="0,0,0,255"/>
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="MC_playerBlocks" categoryname="PlayerBlocks" spritename="ui_game_symbol_player" displayname_key="xuiPlayerBlocks" />
+					<!-- 物品 --><sprite sprite="ui_game_symbol_subtract" style="icon32px" pivot="center" width="50" height="8" color="0,0,0,255"/>
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="" categoryname="Items" spritename="ui_game_symbol_backpack" displayname_key="xuiItems"/>
+				</grid>
+			</rect>
+
+			<rect depth="2" name="categoryBar2" width="43" height="718" pos="52,-49">
+				<sprite depth="1" name="background" color="[darkGrey]" type="sliced" pos="-1,0" width="48" height="722" />
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="52" height="727" color="[black]" type="sliced" fillcenter="false"  />
+
+				<grid depth="10" name="subCategoriesShapes" visible="{main_category_is_shapes}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" repeat_content="true" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon />
+				</grid>
+				<grid depth="10" name="subCategoriesProps" visible="{#main_category_name == 'Building'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_construction" spritename="ui_game_symbol_resource" displayname_key="xuifConstruction" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_destruction" spritename="ui_game_symbol_destruction" displayname_key="xuifDestruction" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_electrical" spritename="ui_game_symbol_electric_plugin" displayname_key="xuifElectrical" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_lighting" spritename="ui_game_symbol_lightbulb" displayname_key="xuifLighting" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_decor" spritename="ui_game_symbol_chair" displayname_key="xuifDecor" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_industrial" spritename="ui_game_symbol_shape_factory" displayname_key="xuifIndustrial" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_commercial" spritename="ui_game_symbol_map_trader" displayname_key="xuifCommercial" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_residential" spritename="ui_game_symbol_map_house" displayname_key="xuifResidential" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_loot" spritename="ui_game_symbol_loot_sack" displayname_key="xuifLoot" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_automotive" spritename="ui_game_symbol_service" displayname_key="xuifAutomotive" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_plumbing" spritename="ui_game_symbol_wrench" displayname_key="xuifPlumbing" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_doors" spritename="ui_game_symbol_door" displayname_key="xuifDoors" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_windows" spritename="ui_game_symbol_windows" displayname_key="xuifWindows" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_traps" spritename="ui_game_symbol_traps" displayname_key="xuifTraps" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesProps" visible="{#main_category_name == 'Outdoor'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_decor" spritename="ui_game_symbol_chair" displayname_key="xuifDecor" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_fences" spritename="ui_game_symbol_shape_outdoor_props" displayname_key="xuifFences" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_trees" spritename="ui_game_symbol_tree" displayname_key="xuifTrees" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_shrubbery" spritename="ui_game_symbol_foliage" displayname_key="xuifFoliage" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_crops" spritename="ui_game_symbol_crops" displayname_key="xuifCrops" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_terrain" spritename="ui_game_symbol_map_cave" displayname_key="xuifTerrain" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_signs" spritename="ui_game_symbol_signs" displayname_key="xuifSigns" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesLevelDesign" visible="{#main_category_name == 'LevelDesign'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperIndustrial" spritename="ui_game_symbol_shape_factory" displayname_key="xuifIndustrialHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperCommercial" spritename="ui_game_symbol_map_trader" displayname_key="xuifCommercialHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperResidential" spritename="ui_game_symbol_map_house" displayname_key="xuifResidentialHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperOutdoor" spritename="ui_game_symbol_tree" displayname_key="xuifOutdoorHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperElectrical" spritename="ui_game_symbol_electric_plugin" displayname_key="xuifElectricalHelpers" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperSleeper" spritename="ui_game_symbol_zombie" displayname_key="xuifSleeperHelpers" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_helperTerrain" spritename="ui_game_symbol_map_cave" displayname_key="xuifTerrainHelpers" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_design" spritename="ui_game_symbol_other" displayname_key="xuifDesign" /> -->
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_loot" spritename="ui_game_symbol_loot_sack" displayname_key="xuifLoot" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_treasureRoom" spritename="ui_game_symbol_treasure" displayname_key="xuifLootRoom" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_questblocks" spritename="ui_game_symbol_quest" displayname_key="xuifQuestBlocks" />
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesProps" visible="{#main_category_name == 'PlayerBlocks'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_electrical" spritename="ui_game_symbol_electric_plugin" displayname_key="xuifElectrical" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_traps" spritename="ui_game_symbol_traps" displayname_key="xuifTraps" />
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_decor" spritename="ui_game_symbol_chair" displayname_key="xuifDecor" />
+				
+					<category_icon_creative_filter filtertype="blockfiltertags" filtertext="SC_playerHelpers" spritename="ui_game_symbol_weight" displayname_key="xuifPlayerHelpers" color="7,9,33" />
+
+
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+					<!-- <category_icon_creative_filter filtertype="blockfiltertags" filtertext="" spritename="ui_game_symbol_other" displayname_key="BLANK" /> -->
+				</grid>
+				<grid depth="10" name="subCategoriesItems" visible="{#main_category_name == 'Items'}" pos="24,-22" rows="16" cols="1" width="43" height="675" cell_width="43" cell_height="43" arrangement="vertical" controller="CategoryList" allow_unselect="true" allow_key_paging="false">
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Resources" spritename="ui_game_symbol_resource" displayname_key="lblCategoryResources" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Tools/Traps" spritename="ui_game_symbol_tool" displayname_key="lblCategoryTools" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Melee Weapons" spritename="ui_game_symbol_knife" displayname_key="lblCategoryMeleeWeapons" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Ranged Weapons" spritename="ui_game_symbol_rifle" displayname_key="lblCategoryRangeWeapons" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Tool/Weapon Mods" spritename="ui_game_symbol_assemble" displayname_key="lblCategoryToolWeaponMods" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Robotics" spritename="ui_game_symbol_junk_turret" displayname_key="lblCategoryRobotics" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Ammo" spritename="ui_game_symbol_shape_ammo" displayname_key="lblCategoryAmmo" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Clothing" spritename="ui_game_symbol_shirt" displayname_key="lblCategoryClothing" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Armor" spritename="ui_game_symbol_armor_iron" displayname_key="lblCategoryArmor" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Food/Cooking" spritename="ui_game_symbol_fork" displayname_key="lblCategoryFoodCooking" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Science" spritename="ui_game_symbol_science" displayname_key="lblCategoryScience" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="BooksOnly" spritename="ui_game_symbol_book" displayname_key="lblCategoryBooksOnly" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="SchematicsOnly" spritename="ui_game_symbol_shape_schematics" displayname_key="lblCategorySchematicsOnly" />
+					<category_icon_creative_filter filtertype="itemgroups" filtertext="Special Items" spritename="ui_game_symbol_quest" displayname_key="lblCategorySpecialItems" />
+				</grid>
+
+			</rect>
+
+			<grid depth="10" name="queue" rows="9" cols="7" pos="101,-97" cell_width="75" cell_height="75" repeat_content="true" controller="Creative2StackGrid" >
+				<item_stack name="0" controller="Creative2Stack" on_scroll="true" allow_dropping="false" prefix_id="true" show_favorites="true" />
+			</grid>
+
+			<sprite depth="8" name="backgroundMain" pos="98,-97" width="528" height="675" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" on_press="true" />
+		</rect>
+	</window>
+
+
+
+	</append>
+
+
+
+
+
+----------------------------------------------------------------
+
+
+<remove xpath="/windows/window[@name='windowCompass']" />
+
+	<append xpath="/windows">
+
+
+	<window name="windowCompass" anchor="CenterTop" pos="-240,-9" width="480" height="43" controller="CompassWindow">
+		<sprite depth="0" sprite="ui_game_header_fill" pos="47,0" width="386" height="43" type="sliced" color="150,150,150,150" />
+		<sprite depth="1" sprite="ui_game_header_fill" pos="50,-3" width="380" height="37" type="sliced" color="50,50,50,220" />
+
+		<!--<texture depth="8" texture="Textures/UI/ui_game_compass" pos="50, -15" width="380" height="23" color="[iconColor]" name="compassTexture" rect_size="0.25,1" rect_offset=".8,0" />-->
+		
+		<texture depth="8" texture="Textures/UI/Compass/overlay-{gamelanguage}" pos="50, -12" width="380" height="27" color="[iconColor]" name="compassTexture3" rect_size="0.25,1" rect_offset="{#compass_rotation / 360 + 0.0625 - 0.125},0" />
+
+           	<label depth="2" pos="0,0" size="350,50" text=" [1CFF1C]等级LV: [DECEA3]{playerlevel}[1CFF1C]" font_size="24" justify="center" /> [94CA9C]警告！夜晚僵尸狂暴
+
+
+		<sprite pos="240,-60" sprite="" color="255,255,255,255" globalopacitymod="1.8">
+			<label depth="2" width="300" height="30" text="{daytitle}: [{daycolor}]{day}[-] {timetitle}: {time}" font_size="28" pivot="center" effect="outline" upper_case="true" justify="center"/>
+		</sprite>
+	
+
+
+
+<!-- 	
+			globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+    pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   	
+		    <sprite pos="100,-120" sprite="" color="255,255,255,255" globalopacitymod="0">	1.8
+			 
+		
+               	            effect_distance   影响距离                
+				天数     depth  向里的距离     width 宽度  height  高度  大小 size  字体大小font_size   不脆 不脆 效果 显示
+                <label name="fpsHUDday" depth="2" pos="60,60" width="100" height="30" text="[1CFF1C]天数 [{daycolor|always}]{day|always}" 
+				       font_size="30" crispness="Never" effect="outline"
+                       effect_distance="1,1" upper_case="true" pivot="center" justify="center"/>
+					   影响距离             大写字母          支点   居中   证明正当  居中
+					   
+				
+            </sprite>
+		
+		  <sprite pos="260,-120" sprite="" color="255,255,255,255" globalopacitymod="0">	1.8
+			
+			
+                <label name="fpsHUDtime" depth="2" pos="60,60" width="150" height="30" text="[1CFF1C]时间[-]{time|always}" 
+                       font_size="30" crispness="Never" effect="outline" effect_distance="1,1" upper_case="true"
+                       pivot="center" justify="center"/>
+					   
+				
+            </sprite>
+		 -->
+		
+		
+		
+		
+	</window>
+
+	
+
+
+
+
+	</append>
+	globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+    pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   					
+					
+		color="[iconColor]"			
+					
+			[-]\n\n		
+					
+    统计
+    <remove xpath="/windows/window[@name='HUDLeftStatBars']"/>左统计条
+
+ <append xpath="/windows">
+      <window name="HUDLeftStatBars" pos="25,-5" size="240,175">
+         <rect name="hud" pos="9,305" rows="2" cols="1" width="336" side="right">
+      
+            <rect controller="CharacterFrameWindow">    等级 pos="200,-220"
+           <panel name="header" height="1" depth="1" pos="200,-2200" backgroundspritename="true">
+                  <sprite depth="1" name="headerbackground" sprite="menu_empty3px" color="[transparent]"/>
+                  <label depth="2" name="characterName" pos="99999,-6" width="150" height="32" text="" font_size="32"/>
+                 <label depth="2" name="levelNumber" pos="0,0" width="80" height="28" text=""/> 
+             
+               </panel> 
+             <rect visible="{showcharacter}" pos="9999,9999">
+                  <panel name="previewFrame" depth="0" pos="0,0" width="10" on_press="true" on_hover="true" disableautobackground="true" snap="false">
+                     <rect>
+                        <texture depth="2" name="playerPreview" material="Materials/Transparent Colored" size="8,8" globalopacity="true" globalopacitymod="0.1"/>
+                     </rect>
+                  </panel>
+               </rect>  
+			   
+		<!-- 	       <rect width="171" height="36" controller="ToolbeltWindow" visible="{statvisible}">
+                  <sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
+                  <sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+                  <filledsprite depth="3" name="background" color="110,110,110,128" type="filled"/>
+                  <sprite depth="5" name="BarContent" color="255,105,180,200" foregroundlayer="true" type="filled" fill="{xp}"/>
+                  <sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="ui_game_symbol_xp" size="26,26" pos="3,-4" foregroundlayer="true"/>
+                  <label depth="7" name="TextContent" pos="4,-6" font_size="28" color="[white]" justify="center" pivot="topleft" text="{playerxptonextlevel}" height="36"/>
+                  <sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
+                  <filledsprite depth="8" name="background" color="0,0,0,255" fillcenter="false" type="filled" fill="{statmodifiedmax}"/>
+                  <filledsprite depth="3" name="background" color="0,0,0,255" fillcenter="false" type="filled" fill="{statmodifiedmax}" />
+               </rect> -->
+          <!--      <rect width="90" height="90" pos="240,-110" controller="ToolbeltWindow" visible="{statvisible}">
+                  <sprite depth="1" name="border" color="0,0,0,255" sprite="ui_game_filled_circle" size="90,90" type="sliced" pivot="center"/>
+                  <sprite depth="2" name="border" color="255,255,255,30" type="sliced" sprite="ui_game_filled_circle" size="76,76" fillcenter="false" pivot="center"/>
+                  <sprite depth="3" name="BarContent" color="255,105,180,200" sprite="ui_game_filled_circle" size="76,76" foregroundlayer="true" type="filled" fill="{xp}" filldirection="radial360" pivot="center"/>
+                  <sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="ui_game_symbol_trophy" size="32,32" foregroundlayer="true" pivot="center"/>
+                  <sprite depth="4" name="border" color="0,0,0,255" type="sliced" sprite="ui_game_filled_circle" size="60,60" fillcenter="false" pivot="center"/>
+               </rect> -->
+           
+			   
+			   
+			   
+			  <!--    
+						 显示击杀 等数据		
+					<sprite depth="0" name="background" color="0,0,0,220" pos="-45,60" size="300,75" globalopacitymod="0" type="sliced" />
+                    <label depth="5" name="playerXP" pos="-35,4" font_size="18" color="[white]" justify="left" pivot="topleft" text="Level: [DECEA3]{playerlevel} - {playerxptonextlevel}" controller="PlayerStatsWindow"/>		
+                    <label name="PlayerDeaths" font_size="18" pos="120,7" controller="PlayerStatsWindow" color="[white]" depth="5" effect="outline" text="Deaths [DECEA3]{playerdeaths}" justify="left"/>	
+                    <label name="PlayerKills" font_size="18" pos="120,27" controller="PlayerStatsWindow" color="[white]" depth="5" effect="outline" text="PVP Kills[DECEA3]{playerpvpkills}" justify="left"/>		
+                    <label name="PlayerZombieKills" font_size="18" pos="120,47" controller="PlayerStatsWindow" color="[white]" depth="5" effect="outline" text="Zombie Kills [DECEA3]{playerzombiekills}" justify="left"/>					
+                    <label name="Currentlife" font_size="18" pos="-35,27" controller="PlayerStatsWindow" color="[white]" depth="5" effect="outline" text="Current life [DECEA3]{playercurrentlife}" justify="left"/>										
+                    <label name="Longestlife" font_size="18" pos="-35,47" controller="PlayerStatsWindow" color="[white]" depth="5" effect="outline" text="Longest life [DECEA3]{playerlongestlife}" justify="left"/>
+					-->
+			<!-- 	<rect name="StatInfo" pos="170,53" rows="1" cols="1" width="262">	 -->  
+		<rect name="StatInfo" pos="161,-252" rows="1" cols="1" width="262" controller="PlayerStatsWindow">	 
+				       抬头显示器                              宽度      控制器         玩家统计窗口   看得见的  静态可视
+				<rect name="hud" pos="0,77" rows="1" cols="1" width="302" controller="PlayerStatsWindow" visible="{statvisible}">
+	globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+    pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   					
+					
+		color="[iconColor]"			
+					
+			[-]\n\n		
+					
+					
+<!-- 			<sprite depth="5" pos="8,204"  width="40" height="40" color="0,255,0" sprite="ui_game_symbol_pistol" type="filled" fill="1" globalopacitymod="1.5" controller="ToolbeltWindow" standard_xp_color="90,0,153,200" updating_xp_color="[green]" deficit_xp_color="[red]" xp_fill_speed="2.5"/>							
+手枪击杀统计<label depth="5" name="TextContent" pos="60,200"    width="150" height="50" text="[66C8FD]手枪：[-]{cvar(pistolkill:0)}"/>	
+								
+					
+			<sprite depth="5" pos="8,164"  width="40" height="40" color="0,255,0" sprite="ui_game_symbol_electric_turret" type="filled" fill="1" globalopacitymod="1.5" controller="ToolbeltWindow" standard_xp_color="90,0,153,200" updating_xp_color="[green]" deficit_xp_color="[red]" xp_fill_speed="2.5"/>							
+手枪击杀统计<label depth="5" name="TextContent" pos="60,160"    width="150" height="50" text="[66C8FD]猎枪：[-]{cvar(shotgunkill:0)}"/>	
+								
+			<sprite depth="5" pos="8,124"  width="40" height="40" color="0,255,0" sprite="ui_game_symbol_rifle" type="filled" fill="1" globalopacitymod="1.5" controller="ToolbeltWindow" standard_xp_color="90,0,153,200" updating_xp_color="[green]" deficit_xp_color="[red]" xp_fill_speed="2.5"/>							
+手枪击杀统计<label depth="5" name="TextContent" pos="60,120"    width="150" height="50" text="[66C8FD]机枪：[-]{cvar(machinegunkill:0)}"/>	
+								
+					
+					
+			<sprite depth="5" pos="8,84"  width="40" height="40" color="0,255,0" sprite="ui_game_symbol_explosion" type="filled" fill="1" globalopacitymod="1.5" controller="ToolbeltWindow" standard_xp_color="90,0,153,200" updating_xp_color="[green]" deficit_xp_color="[red]" xp_fill_speed="2.5"/>							
+手枪击杀统计<label depth="5" name="TextContent" pos="60,80"    width="150" height="50" text="[66C8FD]爆炸：[-]{cvar(explosiveskill:0)}"/>	
+							
+					
+					
+		<sprite depth="5" pos="8,44"  width="40" height="40" color="0,255,0" sprite="ui_game_symbol_skull_crusher" type="filled" fill="1" globalopacitymod="1.5" controller="ToolbeltWindow" standard_xp_color="90,0,153,200" updating_xp_color="[green]" deficit_xp_color="[red]" xp_fill_speed="2.5"/>							
+手枪击杀统计<label depth="5" name="TextContent" pos="60,40"    width="150" height="50" text="[66C8FD]爆头：[-]{cvar(headshotkill:0)}"/>	
+					
+	
+击杀统计	 -->————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————				
+					<sprite depth="1" pos="0,0" height="37" width="302" color="0,0,0,220" type="sliced" foregroundlayer="true"/>
+					
+					                      玩家XP                 字体大小
+					<label depth="5" name="playerXP" pos="8,-6" font_size="24" color="[white]" justify="left" pivot="topleft" text="[1CFF1C]玩家等级[DECEA3]   {cvar(WJDJTS:0)}[1CFF1C]   需求:[DECEA3]{playerxptonextlevel}" controller="PlayerStatsWindow"/>						
+					 -->
+					                        玩家 需要 XP                                       pivot="left"   主要位置justify证明正当  pivot支点
+			      	            effect_distance   影响距离                
+				天数     depth  向里的距离     width 宽度  height  高度  大小 size  字体大小font_size   不脆 不脆 效果 显示	justify="right"	pivot="topright" 						
+											
+				<!-- 	<label depth="5" name="playerXPNeed" pos="8,-4" font_size="24" color="[white]" justify="left" pivot="topright" text="[1CFF1C]等级LV: [DECEA3]{playerlevel}[1CFF1C]需求:[DECEA3]{playerxptonextlevel}" controller="PlayerStatsWindow"/>	 -->
+					<sprite depth="3" pos="3,-3" height="30" width="295" color="[darkGrey]" foregroundlayer="true" type="sliced"/>
+					<sprite depth="4" pos="3,-3" height="30" width="295" color="{xpcolor}" sprite="menu_empty3px" type="filled" fill="{xp}" globalopacitymod="1.5" controller="ToolbeltWindow" standard_xp_color="90,0,153,200" updating_xp_color="[green]" deficit_xp_color="[red]" xp_fill_speed="2.5"/>					
+
+				</rect>	
+			                                                                              玩家状态          静态可视
+				<rect name="hud" pos="0,0" rows="1" cols="1" width="100" controller="PlayerStatsWindow" visible="{statvisible}">
+				
+					<sprite depth="1" pos="0,0" height="38" width="100" color="0,0,0,220" type="sliced" foregroundlayer="true"/>
+
+					                        窗口图标
+					<sprite depth="2" name="windowIcon" width="30" height="30" pos="4,-4" sprite="ui_game_symbol_marksmanship" color="[iconColor]" foregroundlayer="true"/>
+					                                                                           杀死
+					<label depth="2" name="TextContent" pos="36,-4" width="100" height="12" text="[FFCC33]杀敌" font_size="12" color="[white]"/>	
+					
+					<label depth="2" name="TextContent" pos="36,-16" width="100" height="19" text="[DECEA3]{playerzombiekills}"/>					
+
+				</rect>	
+			
+				<rect name="hud" pos="101,0" rows="1" cols="1" width="100" controller="PlayerStatsWindow" visible="{statvisible}">
+					<sprite depth="1" pos="0,0" height="38" width="100" color="0,0,0,220" type="sliced" foregroundlayer="true"/>
+
+					<sprite depth="2" name="windowIcon" width="30" height="30" pos="4,-4" sprite="ui_game_symbol_near_death_trauma" color="[iconColor]" foregroundlayer="true"/>
+					<label depth="2" name="TextContent" pos="36,-4" width="100" height="12" text="[FFCC33]死亡" font_size="12" color="[white]"/>	
+					<label depth="2" name="TextContent" pos="36,-16" width="100" height="19" text="[DECEA3]{playerdeaths}"/>					
+
+				</rect>	
+			
+				<rect name="hud" pos="202,0" rows="1" cols="1" width="100" controller="PlayerStatsWindow" visible="{statvisible}">
+					<sprite depth="1" pos="0,0" height="38" width="100" color="0,0,0,220" type="sliced" foregroundlayer="true"/>
+
+					<sprite depth="2" name="windowIcon" width="30" height="30" pos="4,-4" sprite="ui_game_symbol_run_and_gun" color="[iconColor]" foregroundlayer="true"/>
+					<label depth="2" name="TextContent" pos="36,-4" width="80" height="12" text="[FFCC33]击毙玩家" font_size="12" color="[white]"/>	
+					<label depth="2" name="TextContent" pos="36,-16" width="80" height="19" text="[DECEA3]{playerpvpkills}"/>					
+
+				</rect>		
+			
+				<rect name="hud" pos="0,39" rows="1" cols="1" width="140" visible="{statvisible}">
+					<sprite depth="1" pos="0,0" height="38" width="140" color="0,0,0,220" type="sliced" foregroundlayer="true"/>
+
+					<sprite depth="2" name="windowIcon" width="30" height="30" pos="4,-4" sprite="ui_game_symbol_player" color="[iconColor]" foregroundlayer="true"/>
+				
+               <!--    <label depth="2" name="TextContent" pos="60,76"    width="200" height="40" text=""/> -->[-]
+			6	<label depth="2" name="TextContent" pos="36,-4" width="100" height="12" text="[FFCC33]当前存活" font_size="12" color="[white]"/>	
+					<label depth="2" name="TextContent" pos="36,-16" width="100" height="19" text="[DECEA3]{playercurrentlife}" />	controller="PlayerStatsWindow"
+				</rect>	
+			                                          
+													  
+													                                    静态可视 
+				<rect name="hud" pos="141,39" rows="1" cols="1" width="161" visible="{statvisible}">
+					<sprite depth="1" pos="0,0" height="38" width="161" color="0,0,0,220" type="sliced" foregroundlayer="true"/>
+                                                                                                   游戏符号头骨
+					<sprite depth="2" name="windowIcon" width="30" height="30" pos="4,-4" sprite="ui_game_symbol_skull" color="[iconColor]" foregroundlayer="true"/>
+					<label depth="2" name="TextContent" pos="36,-4" width="100" height="12" text="[FFCC33]最高存活时长" font_size="12" color="[white]"/>	
+					<label depth="2" name="TextContent" pos="36,-16" width="100" height="19" text="[DECEA3]{playerlongestlife}" />			controller="PlayerStatsWindow"		
+
+				</rect>
+				</rect>
+            </rect>
+	globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size 大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   
+            </rect>           
+          
+
+           fps hud统计条    size大小                 rows 一排  cols 垂直分割窗口  side   侧面
+           总布局 <rect name="fpsHUDstatBars" pos="-47,137" size="240,160" rows="1" cols="1" side="right">
+                                                                                          HUD统计栏            隐身
+       			<!-- 	<rect name="fpsHUDstealthBar" pos="800,50" size="400,25" controller="HUDStatBar" stat_type="Stealth" visible="{statvisible}">
+				                         背景
+				<sprite depth="0" name="background" color="0,0,0,220" pos="-150,-3" size="400,25" globalopacitymod="0" type="sliced"/>
+                  
+		  <filledsprite name="barBackground" depth="4" pos="-150,-3" size="400,25" atlas="uiAtlas" type="filled" fill="1" color="[darkGrey]"/>
+                                        条形图内容
+		   <filledsprite name="BarContent" depth="5" pos="-150,-3" size="400,25" atlas="uiAtlas" type="filled" fill="0" color="[hudElementsStealth]"/>
+                                                                纹理  
+				                                                                                   hud元素图标    
+				 -->
+				<!-- <texture name="Icon" depth="7" pos="-20,0" size="25,25" texture="10" color="[hudElementsIcon]" foregroundlayer="true"/>
+             -->
+       <!--               字体                 地图集   图标 眼镜静力学    
+			<sprite depth="7" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="40,40" pos="30,50" foregroundlayer="true"/>
+
+
+	              		文本内容    销售点     字体大小             白色         居中    对齐   向左 旋转   文本   静态电流     宽度        高度
+[35288D]<label name="TextContent" depth="7" pos="-150,-1" text="{statcurrent}" font_size="50" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="center" pivot="topleft"/>
+					</rect> -->
+ 
+ 
+ 
+ 
+ 
+ 
+<!--       <label name="fpsHUDtime" depth="2" pos="60,60" width="150" height="30" text="[1CFF1C]时间[-]{time|always}" 
+                       font_size="30" crispness="Never" effect="outline" effect_distance="1,1" upper_case="true"
+                       pivot="center" justify="center"/> -->
+					   
+ 
+ <!-- 	阴影大小		<sprite depth="1" pos="0,0" height="38" width="100" color="0,0,0,220" type="sliced" foregroundlayer="true"/> -->
+
+ 
+ 
+ 
+ 
+ 
+
+
+			globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽 
+                   <rect name="fpsHUDstatContainer"  pos="0,-70" >                 
+				                         
+               <sprite pos="-10,250" sprite="" color="255,255,255,255" globalopacitymod="0">	1.8
+			                                                    销售时点情报系统    globalopacitymod全局容量模式 类型   切片sliced         填满filled
+			
+			
+			
+			
+			
+				
+							       抬头显示器                              宽度      控制器         玩家统计窗口   看得见的  静态可视
+				<!-- <rect name="hud" pos="0,77" rows="1" cols="1" width="262" controller="PlayerStatsWindow" visible="{statvisible}">
+					</rect>	 -->
+		<!-- 	浅阴影<sprite depth="1" pos="40,20" height="40" width="200" color="0,0,0,220" type="sliced" foregroundlayer="true"/>
+					
+					                      玩家XP   width宽度 -->[1CFF1C]
+					
+				海拔
+			 <label name="fpsHUDelevationValue" depth="2" pos="130,2" width="150" height="20" text="{mapelevationtitle}: [DECEA3]{mapelevation} M[-]"
+                       font_size="30" crispness="Never" effect="outline" effect_distance="1,1" upper_case="true"
+                       pivot="center" justify="center" controller="MapStats"/>控制器 地图统计
+					
+					                        玩家 需要 XP
+					height高度
+				深阴影	<sprite depth="1" pos="40,20" height="35" width="180" color="51,102,255" foregroundlayer="true" type="sliced"/>[darkGrey]
+				
+	<sprite depth="2" name="elevIcon" width="24" height="24" pos="43,15" sprite="ui_game_symbol_climb" color="[iconColor]" foregroundlayer="true"/>
+			
+              <!-- 	   地图高程   原
+                <label name="fpsHUDelevationValue" depth="2" pos="130,0" width="150" height="20" text="[1CFF1C]海拔[-]{mapelevation} M"
+                       font_size="30" crispness="Never" effect="outline" effect_distance="1,1" upper_case="true"
+                       pivot="center" justify="center" controller="MapStats"/>控制器 地图统计 -->
+				
+            </sprite>
+		  <sprite pos="-10,210" sprite="" color="255,255,255,255" globalopacitymod="0">	1.8
+			    <!--                                                  销售时点情报系统    globalopacitymod全局容量模式 类型   切片sliced         填满filled
+				<sprite depth="0" name="background" color="0,0,0,220" pos="65,-50" size="325,27" globalopacitymod="0" type="filled" />
+				 -->
+			
+                FPShudmap温度     环境温度[-]{maptemperature}   环境温度: [DECEA3]{maptemperature}[-]
+                <label name="fpsHUDmapTemperature" depth="2" pos="130 ,0" width="150" height="20" text="环境温度: [DECEA3]{maptemperature}[-]"
+                       font_size="30" crispness="Never" effect="outline" effect_distance="1,1" upper_case="true"
+                       pivot="center" justify="center" controller="MapStats"/>
+					 	height高度
+						环境温度
+					<sprite depth="2" name="windIcon" width="24" height="24" pos="43,15" sprite="ui_game_symbol_wind" color="[iconColor]" foregroundlayer="true"/>	
+				深阴影	<sprite depth="1" pos="40,20" height="35" width="180" color="23,104,34" foregroundlayer="true" type="sliced"/>
+				
+  
+				
+            </sprite>
+			
+			
+			
+			
+		大3数值阴影<sprite depth="0" name="background" color="0,0,0,220" pos="25,276" size="190,333" globalopacitymod="0" type="sliced" />	
+		
+
+
+  <sprite pos="-10,170" sprite="" color="255,255,255,255" controller="MapStats" globalopacitymod="0">	1.8
+
+<!-- 
+<label name="TextContent" depth="7" pos="-5,-8" text=" {playercoretemptitle}: [DECEA3]{playercoretemp}[-]" font_size="32" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="right" controller="PlayerStatsWindow"/>
+ -->
+ -->
+
+			玩家体温 [DECEA3]
+               <label name="TextContent" depth="7" pos="130 ,0" width="250" height="20" text="{playercoretemptitle}: [DECEA3]{playercoretemp}[-]"
+                       font_size="30" crispness="Never" effect="outline" effect_distance="1,1" upper_case="true"
+                       pivot="center" justify="center" />
+					height高度
+					
+	<sprite depth="3" name="tempIcon" width="24" height="24" pos="43,15" sprite="ui_game_symbol_temperature" color="[iconColor]" foregroundlayer="true"/>	
+				深阴影	<sprite depth="2" pos="40,20" height="35" width="180" color="86,86,86" foregroundlayer="true" type="sliced"/>
+				
+
+    
+	</sprite>			
+
+	
+			  <sprite pos="-10,130" sprite="" color="255,255,255,255" globalopacitymod="0">	1.8
+			    <!--                                                  销售时点情报系统    globalopacitymod全局容量模式 类型   切片sliced         填满filled
+				<sprite depth="0" name="background" color="0,0,0,220" pos="65,-50" size="325,27" globalopacitymod="0" type="filled" />
+				 -->
+			
+                FPShudmap温度     环境温度[-]{maptemperature}
+                <label name="availableMoney" depth="2" pos="130 ,2" width="150" height="20" text="金额：{currencyamount}"
+                       font_size="30" crispness="Never" effect="outline" effect_distance="1,1" upper_case="true"
+                       pivot="center" justify="center" controller="BackpackWindow"/>
+					 	height高度
+						环境温度
+					<sprite depth="2" name="costIcon" width="24" height="24" pos="43,15" sprite="ui_game_symbol_coin" color="[iconColor]" foregroundlayer="true"/>	
+				深阴影	<sprite depth="1" pos="40,20" height="35" width="180" color="143,97,21" foregroundlayer="true" type="sliced"/>
+				
+  
+				
+            </sprite>
+	<!-- 
+			<grid visible="{showstats}" depth="0" pos="25,800" width="327" cols="1" cell_height="30" repeat_content="false" arrangement="vertical">
+			<player_stats_entry backgroundcolor="[darkestGrey]" textcontent="{playerhealthtitle|once}" valuecontent="{playerhealth}/{playermaxhealth}" />
+			<player_stats_entry backgroundcolor="[darkGrey]"    textcontent="{playerstaminatitle|once}" valuecontent="{playerstamina}/{playermaxstamina}" />
+			<player_stats_entry backgroundcolor="[darkestGrey]" textcontent="{playerfoodtitle|once}" text="{playermodifiedcurrentfood}/{playerfoodmax}" />
+			<player_stats_entry backgroundcolor="[darkGrey]"    textcontent="{playerwatertitle|once}" valuecontent="{playermodifiedcurrentwater}/{playerwatermax}" />
+	
+		</grid> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   	
+			
+										            位置          大小   185,49                      健康
+                    <rect name="fpsHUDhealthBar"  pos="0,115" size="182,39" controller="HUDStatBar" stat_type="Health" visible="{statvisible}">
+					                            背景                                                                         类型   filled填满   sliced切片         
+						<sprite depth="0" name="background" color="0,0,0,220" pos="30,-5" size="182,39" globalopacitymod="0" type="sliced" pivot="topleft"/>
+                                            背景           销售时点情报系统 大小                                                                    全局容量模式           颜色
+					  <filledsprite name="background" depth="3" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled"  fill="{statmodifiedmax}" globalopacitymod="1.1" color="[darkGrey]"/>
+                                         条形图内容92,-9
+					 <filledsprite name="BarContent" depth="5" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled" fill="0" color="[hudElementsHealth]"/>
+                     
+					 <!-- <texture name="Icon" depth="7" pos="31,-2" size="58,58" texture="健康" color="[hudElementsIcon]" foregroundlayer="true"/>
+                    -->
+				                                                                                         大小         高度
+				 
+				 
+				 <!--   <sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="48,48" pos="31,-2" foregroundlayer="true"/> -->
+				 
+				 
+				                 ➕图标              地图集   统计图表                     静力学                       29,-7       
+				 <sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="35,35" pos="31,-7"  foregroundlayer="true"/>pivot="left"
+					                                          24,-12                            字体大小  32    
+					<label name="TextContent" depth="7" pos="-5,-11" text="{statcurrentwithmax}" font_size="32" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="right"/>
+					 -->
+
+              
+
+
+					
+					</rect>   
+
+
+					耐力
+					<rect name="fpsHUDstaminaBar" pos="0,74" size="182,39" controller="HUDStatBar" stat_type="Stamina" visible="{statvisible}">
+
+					
+					<sprite depth="0" name="background" color="0,0,0,220" pos="30,-5" size="182,39" globalopacitymod="0" type="filled" pivot="topleft"/>
+                     
+					 <filledsprite name="background" depth="3" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled" fill="{statmodifiedmax}" globalopacitymod="1.3" color="[darkGrey]"/>
+                     
+					 <filledsprite name="BarContent" depth="5" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled" fill="0" color="[hudElementsStamina]"/>
+                      
+					<!--   <texture name="Icon" depth="7" pos="31,-3" size="54,54" texture="耐力" color="[hudElementsIcon]" foregroundlayer="true"/>
+                     -->
+					
+					<sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="ui_game_symbol_agility" size="35,35" pos="31,-5" foregroundlayer="true"/>
+					                                         24,-12
+					<label name="TextContent" depth="7" pos="-5,-11" text="{statcurrentwithmax}" font_size="32" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="right"/>	
+						
+					</rect>   
+
+
+
+<!-- 	<rect width="230" height="30" controller="HUDStatBar" stat_type="Food" visible="{statvisible}">
+					<filledsprite depth="4" name="background" color="110,110,110,128" type="filled" fill="{statmodifiedmax}" />
+					<filledsprite depth="5" name="BarContent" color="255,165,0,128" type="filled" fill="0"  />
+					<sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="28,28" pos="1,-1" pivot="topleft" foregroundlayer="true"/>
+					<label depth="7" name="TextContent" pos="30,-1" font_size="28" color="[white]" justify="center" pivot="topleft" text="{statcurrentwithmax}" />
+				</rect> -->
+		食物
+					<rect name="fpsHUDhungerBar"  pos="0,32" size="182,39" controller="HUDStatBar" stat_type="Food" visible="{statvisible}">	
+						  
+						
+						<sprite depth="0" name="background" color="0,0,0,220" pos="30,-5" size="182,39" globalopacitymod="0" type="sliced" pivot="topleft"/>
+                        
+						<filledsprite name="background" depth="3" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled" fill="{statmodifiedmax}" globalopacitymod="1.3" color="[darkGrey]"/>
+                       
+					   <filledsprite name="BarContent" depth="5" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled" fill="0" color="[hudElementsFood]"/>
+                       
+
+					  <!--  <texture name="Icon" depth="7" pos="35,-7" size="46,46" texture="" color="[hudElementsIcon]" foregroundlayer="true"/>
+					 -->
+
+                      <sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="ui_game_symbol_fork" size="35,35" pos="35,-7" foregroundlayer="true"/>
+
+
+					<label name="TextContent" depth="7" pos="-5,-11" text="{statcurrentwithmax}" font_size="32" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="right" controller="PlayerStatsWindow"/>
+						
+					</rect>         
+
+
+
+
+
+
+
+				     水
+					<rect name="fpsHUDthirstBar"  pos="0,-10" size="182,39" controller="HUDStatBar" stat_type="Water" visible="{statvisible}">	
+					
+						 
+						 <sprite depth="0" name="background" color="0,0,0,220" pos="30,-5" size="182,39" globalopacitymod="0" type="sliced" pivot="topleft"/>
+                      
+					  <filledsprite name="background" depth="3" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled" fill="{statmodifiedmax}" globalopacitymod="1.3" color="[darkGrey]"/>
+                     
+					 <filledsprite name="BarContent" depth="5" pos="30,-5" size="182,39" atlas="uiAtlas" type="filled" fill="0" color="[hudElementsWater]"/>
+                    
+					<!-- <texture name="Icon" depth="7" pos="35,-7" size="46,46" texture="" color="[hudElementsIcon]" foregroundlayer="true"/>
+					 -->
+                  
+				  <sprite depth="6" name="Icon" atlas="{staticonatlas|once}" sprite="ui_game_symbol_water" size="35,35" pos="35,-7" foregroundlayer="true"/>
+
+
+                    <label name="TextContent" depth="7" pos="-5,-11" text="{statcurrentwithmax}" font_size="32" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="right" controller="PlayerStatsWindow"/>
+					<!-- <label name="TextContent" depth="7" pos="2,-12" text="水量{playerwater}" font_size="32" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="right" controller="PlayerStatsWindow"/>
+						 -->{statcurrentwithmax}
+					</rect>
+                </rect>
+            </rect>
+
+	
+Buff弹出列表	
+		
+<rect name="hud" pos="9999,9999" side="left" controller="BuffPopoutList" pivot="BottomLeft" >
+			
+			<panel width="168" height="46" name="item" visible="false" pivot="right" disableautobackground="true" pos="70, 0" style="press" sound="[recipe_click]" on_hover="true" >
+			
+			<sprite depth="3" pos="0,0"  name="Background" sprite="ui_game_popup" height="46" width="162" pivot="center" flip="Horizontally" color="[transparent]" />
+			
+			<sprite depth="4" name="Icon" size="40,40" pos="-54,0" pivot="center" color="[transparent]"/>
+		
+		<label depth="6" name="TextContent" pos="0,0" font_size="28" color="[white]" justify="right" height="40" pivot="center"/>
+			</panel>
+		</rect>
+	</window>
+
+
+
+
+
+
+
+
+     
+		
+                        销售时点情报系统  控制器  活动Buff窗口 
+		<window name="BUFFwindow" pos="6,380" Controller="ActiveBuffWindow" width="460" >BUFF窗口
+		               向下翻页
+		<button name="pageDown" size="1,1" pos="9999,9999" />
+	             页码
+	<label name="pageNumber" pos="9999,9999" width="1" height="1" />
+		             上一页
+		<button name="pageUp" size="1,1" pos="9999,9999" />
+                                        活动Buff列表
+		<rect name="buffs" controller="ActiveBuffList">
+			<panel pos="0,0" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-8"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,32" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,64" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,96" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,128" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,160" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,192" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,224" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,256" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,288" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,320" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,352" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,384" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,416" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,448" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,480" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,512" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,544" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,576" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,608" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,640" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,672" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,704" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,736" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+			<panel pos="0,768" height="30" controller="ActiveBuffEntry" width="360" disableautobackground="true" >	
+				<sprite depth="0" name="background" color="[transparent]" />
+				<sprite depth="2" name="Icon" sprite="{bufficon|once}" color="{buffcolor}" style="icon22px" pos="9,-5"/>
+				<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+			</panel>
+		</rect>
+	</window>
+		
+		
+
+		
+		 
+		
+    </append>
+		
+		
+
+		
+		 
+		
+
+	
+                             窗口目标栏
+	<set xpath="/windows/window[@name='windowTargetBar']/@visibility">always</set> -->
+	
+
+	globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+	height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+   pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽 
+
+
+	<append xpath="/windows/window[@name='windowQuestTracker']">任务controller="EquipmentStackGrid" 
+		<rect depth="1" width="70" height="700" pos="180,-110" controller="EquipmentStackGrid"  >
+		<grid name="inventory" rows="10" cols="1" cell_width="75" cell_height="75" repeat_content="true">
+			<equipment_stack name="1"/>
+		</grid>
+	     </rect>
+	</append>
+	
+
+
+
+
+ 工具带
+  <remove xpath="/windows/window[@name='windowToolbelt']"/> -->
+    <append xpath="/windows">
+
+0,70         900,215           anchor="CenterBottom"                
+                                                                              [black]       
+ 		<window name="windowToolbelt" depth="0" pos="10,70" size="900,215" backgroundcolor="[yellow]" anchor="CenterBottom"
+                controller="ToolbeltWindow" visible="{toolbeltvisible}" cursor_area="true">
+            
+        <!-- <rect depth="1" width="70" height="700" pos="740,800" controller="EquipmentStackGrid">
+		<grid name="inventory" rows="10" cols="1" cell_width="75" cell_height="75" repeat_content="true">
+			<equipment_stack name="1"/>
+		</grid>                              backgroundcolor背景色
+	     </rect>  -->
+
+
+	 <rect controller="CharacterFrameWindow" pos="540,280" >size="100,100"
+					 <panel depth="1" pos="39,27" name="header" height="0" stat_type="Stealth" backgroundspritename="true"> 标题
+					<label depth="2" name="characterName" pos="0,0" width="1" height="1" text="" font_size="24"/>
+					<label depth="3" name="levelNumber" pos="0,0" width="1" height="1" text=""/> 
+					<sprite depth="4" pos="0,0" width="225" height="250" sprite="HUD_Players"/>  HUD_球员
+					</panel>
+					<rect visible="{showcharacter}" pos="10,10"> 
+					<panel name="previewFrame" depth="5" pos="0,0" width="154" on_press="true" on_hover="true" disableautobackground="true" snap="false">
+					<rect>    
+
+	
+					
+					                            玩家预览          width="54"      材料/透明彩色                                      true   false   全球透明度    
+					<texture depth="2" name="playerPreview" material="Materials/Transparent Colored" size="200,300" globalopacity="false" globalopacitymod="1"/>  
+					</rect>
+					</panel>
+					</rect>
+					</rect> 
+         
+              
+            <rect>
+			[00FF00] 绿
+			globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽    
+		<!-- 		<rect name="Money" pos="569,36" size="94,24" pivot="BottomRight">
+				
+				阴影	<sprite depth="0" name="background" color="0,0,0,220" pos="0,-0" size="230,40" globalopacitymod="0" type="filled"/>
+				实数	<label depth="2" name="availableMoney"  pos="50,-0" width="200" height="24" text="金额：{currencyamount}" justify="left" controller="BackpackWindow"/>				
+				钱图标	<sprite depth="4" name="costIcon"  pos="0,50" size="60,60" sprite="ui_game_symbol_coin" color="[white]" foregroundlayer="true"/>
+				</rect> -->
+
+			<!-- 	<rect name="Slots" pos="-332,0">插槽
+				                FPSHUD工具带
+					<grid name="fpsHUDtoolbelt" depth="10" pos="0,0" rows="1" cols="10" cell_width="90" cell_height="75" controller="Toolbelt" repeat_content="true" visible="{secondrow}">
+						<MadHUD_toolbelt_interface name="0"/>
+					</grid>					
+					<sprite depth="1" name="background" color="0,0,0,220" pos="0,15" size="900,75" globalopacitymod="0" type="sliced" />
+				</rect> -->
+				
+				
+				
+			<rect pos="-332,10" controller="Toolbelt">这是原版
+				<grid depth="10" name="fpsHUDtoolbelt" rows="1" cols="10" pos="0,0" cell_width="92" cell_height="75" repeat_content="true">
+					<item_stack name="0"/>
+				</grid>
+				<!-- <grid depth="10" name="inventory2" rows="1" cols="10" pos="0,82" cell_width="75" cell_height="75" repeat_content="true" visible="{secondrow}">
+					<item_stack name="0"/>
+				</grid> -->
+			</rect> -->
+			
+			
+			globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   	
+				
+				            fps hud统计条                     rows 一排  cols 垂直分割窗口  side   侧面
+          
+                                                                                          HUD统计栏            隐身
+       				<rect name="fpsHUDstealthBar" pos="-50,120" size="400,25" controller="HUDStatBar" stat_type="Stealth" visible="{statvisible}">
+				                         背景
+				<sprite depth="0" name="background" color="0,0,0,220" pos="-150,-3" size="400,25" globalopacitymod="0" type="sliced"/>
+                  暗灰色
+		  <filledsprite name="barBackground" depth="4" pos="-150,-3" size="400,25" atlas="uiAtlas" type="filled" fill="1" color="[darkGrey]"/>
+                                        条形图内容
+		   <filledsprite name="BarContent" depth="5" pos="-150,-3" size="400,25" atlas="uiAtlas" type="filled" fill="0" color="[hudElementsStealth]"/>
+                                                                纹理  
+				                                                                                   hud元素图标    
+				
+				<!-- <texture name="Icon" depth="7" pos="-20,0" size="25,25" texture="10" color="[hudElementsIcon]" foregroundlayer="true"/>
+             -->
+                     字体                 地图集   图标 眼镜静力学    
+			<sprite depth="7" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="40,40" pos="30,50" foregroundlayer="true"/>
+
+
+	              		文本内容    销售点     字体大小             白色         居中    对齐   向左 旋转   文本   静态电流     宽度        高度
+[35288D]<label name="TextContent" depth="7" pos="-150,-1" text="{statcurrent}" font_size="50" color="[hudElementsLBLPri]" crispness="Never" effect="outline" effect_distance="1,1" justify="center" pivot="topleft"/>
+					</rect>
+				
+				
+	
+				
+						
+			globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   	
+				
+				            fps hud统计条                     rows 一排  cols 垂直分割窗口  side   侧面 cell_width 单元宽度 cell_height 单元高度
+				repeat_content重复内容
+				<rect name="Numbers" pos="-332,42"> 快捷连
+					<grid name="fpsHUDtoolbeltNumbers" depth="1" pos="35,-6" rows="1" cols="10" cell_width="90" cell_height="60" repeat_content="false">
+						<label name="fpsHUDtbNumber1" depth="10" size="18,21" text="[00FF00]1" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber2" depth="10" size="18,21" text="[00FF00]2" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber3" depth="10" size="18,21" text="[00FF00]3" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber4" depth="10" size="18,21" text="[00FF00]4" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber5" depth="10" size="18,21" text="[00FF00]5" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber6" depth="10" size="18,21" text="[00FF00]6" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber7" depth="10" size="18,21" text="[00FF00]7" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber8" depth="10" size="18,21" text="[00FF00]8" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber9" depth="10" size="18,21" text="[00FF00]9" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+						<label name="fpsHUDtbNumber0" depth="10" size="18,21" text="[00FF00]0" color="silver" crispness="Never" effect="outline" effect_distance="1,1" justify="center"/>
+					</grid>
+					
+					fpsHUDtoolbeltinterface     fpsHUDtoolbeltNumbers
+					<grid name="fpsHUDtoolbeltNumbers" depth="1" pos="35,-5" rows="1" cols="10" cell_width="90" cell_height="70" repeat_content="false">
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+						<sprite depth="1" name="background" color="0,0,0,220" size="18,23" globalopacitymod="0" type="sliced" effect_distance="1,1" justify="center"/>
+					</grid>
+				</rect>
+				
+            </rect>
+  
+  </window>
+
+    </append>
+
+  <remove xpath="/windows/window[@name='HUDRightStatBars']"/>
+<append xpath="/windows">
+	<window name="HUDRightStatBars">
+                                                                收集项目集合项列表               
+		<rect name="hud" pos="-90,32" side="right" controller="CollectedItemList" pivot="BottomLeft">
+			<panel width="168" height="46" name="item" visible="false" pivot="right" disableautobackground="true" pos="70, 0" >
+				<sprite depth="3" pos="0,0"  name="Background" sprite="ui_game_popup" height="44" width="162" pivot="center" />
+				<sprite depth="4" name="Icon" atlas="ItemIconAtlas"  size="38,38" pos="50,0" pivot="center" foregroundlayer="true"/>
+				<label depth="6" pos="12,0" name="TextContent" text="[FFFC00]收集{itemcount}" font_size="30" color="[white]" justify="right" height="32" pivot="right"/>
+						<sprite depth="6" pos="0,16" width="36" height="36" name="Negative" sprite="ui_game_symbol_x" color="[red]" />
+			
+			
+<label depth="6" name="TextContent" pos="125,-24" font_size="28" color="[white]" justify="right" pivot="right" text="[FFFC00]收集{itemcount}" width="250" height="30" />	
+			
+			</panel>
+
+<!-- 	 <rect width="168" height="43" controller="CollectedItem">
+				<sprite depth="3" pos="3,0"  name="Background" sprite="{itembackground}" height="43" width="162" color="{itembackgroundcolor}" />
+				<sprite depth="4" name="Icon" atlas="ItemIconAtlas" sprite="{itemicon}" size="32,32" pos="130,-6" color="{itemiconcolor}" />
+				<label depth="6" name="TextContent" pos="15,-10" font_size="28" color="0,0,0,140" justify="right" pivot="right"  text="物品2{itemcount}" height="30"/>
+			 </rect>   -->
+		</rect> 
+
+		<grid name="hud" pos="-194,55" rows="2" cols="1" width="168" cell_width="168" cell_height="46" repeat_content="false" side="right">
+活动项			<rect width="188" height="46" controller="HUDStatBar" stat_type="ActiveItem" visible="{statvisible}">
+				<sprite depth="3" pos="3,0"  name="BarContent" sprite="{statimage|once}" height="46" width="182" />
+图标	<sprite depth="4" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon}" size="39,35" pos="130,-6" color="{staticoncolor}" foregroundlayer="true" />
+				<label depth="6" name="TextContent" pos="115,-26" font_size="28" color="[white]" justify="right" pivot="right" text="[FFFC00]备弹    {statcurrentwithmax}" width="250" height="30" />
+			</rect>
+		</grid>
+		<rect name="hud" pos="-177,106" rows="2" cols="1" width="168" side="right">
+汽车燃料<rect width="168" height="46" controller="HUDStatBar" stat_type="VehicleFuel" visible="{statvisible}">
+				<sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
+				<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+				<sprite depth="2" pos="3,-3"  name="background" height="40" width="162" color="64,64,64,100" type="sliced" />
+				<filledsprite depth="5" name="BarContent" color="0,54,255,128" width="169" type="filled" fill="0" flip="Horizontally" />
+				<sprite depth="4" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="35,35" pos="148,-24" pivot="center" foregroundlayer="true" />
+				<label depth="6" name="TextContent" pos="125,-24" font_size="32" color="[white]" justify="center" pivot="right" text="油量{statcurrentwithmax}" width="120" height="35"/>[243EBA]
+				<sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
+			</rect>
+车辆高度<rect width="168" height="46" pos="0,-50" controller="HUDStatBar" stat_type="VehicleHealth" visible="{statvisible}">
+				<sprite depth="1" name="border" color="0,0,0,128" type="sliced"/>
+				<sprite depth="2" name="background" color="0,0,0,140" type="sliced" />
+				<sprite depth="2" pos="3,-3"  name="background" height="40" width="162" color="64,64,64,100" type="sliced" />
+
+				<filledsprite depth="5" name="BarContent" color="255,0,0,128" width="169" type="filled" fill="0" flip="Horizontally" />
+				<sprite depth="4" name="Icon" atlas="{staticonatlas|once}" sprite="{staticon|once}" size="35,35" pos="148,-24" pivot="center" foregroundlayer="true" />
+				<label depth="6" name="TextContent" pos="125,-24" font_size="28" color="[white]" justify="center" pivot="right" text="耐久{statcurrentwithmax}" width="120" height="35"/>[C5341F]
+				<sprite depth="8" name="border" color="0,0,0,255" type="sliced" fillcenter="false"/>
+			</rect>
+		</rect>
+
+	</window>
+ </append>
+ 
+ 
+ 
+ 
+ 		globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽   	
+				
+				            fps hud统计条                     rows 一排  cols 垂直分割窗口  side   侧面 cell_width 单元宽度 cell_height 单元高度
+				repeat_content重复内容
+ 
+ 
+ 
+ 
+ 
+ 
+   聊天和输出
+ <remove xpath="/windows/window[@name='chatoutput']"/>聊天输出 -->
+
+    <append xpath="/windows">depth深度 backgroundcolor背景色
+
+        <window name="chatoutput" pos="600, -700" depth="100" width="1000" height="250" anchor="LeftTop" controller="ChatOutput" fadeout_wait_time="5" fadeout_duration="1">
+            <textlist name="txtOutput" pos="8,-214" width="885" height="170" list_style="chat" pivot="bottomleft" depth="2" font_size="40" crispness="Never" />
+        </window>
+
+    </append> -->
+
+   <remove xpath="/windows/window[@name='chat']"/>聊天 -->
+
+    <append xpath="/windows">
+        <window name="chat" pos="600, -700" width="1000" height="250" anchor="LeftTop" controller="Chat" cursor_area="true">
+            <rect name="input" depth="2" pos="0,-218" height="32">
+     全球  <combobox name="cbxTarget" type="ComboBoxList`1[EChatType]" value_max="party" pos="2, -6" width="100" height="40" font_size="40" localization_prefix="xuiChatTarget" />
+                <textfield name="txtInput" backgroundcolor="[transparent]" depth="2" pos="110,-16" width="786" height="48" pivot="left" justify="left" overflow="ClampContent" max_line_count="1" crispness="Never" />
+            </rect>文本输入
+            <sprite color="[black]" pos="0, -50" height="250" type="sliced" globalopacitymod="0.9" />
+        </window>
+    </append>
+
+<!--  <remove xpath="/windows/window[@name='windowGroupBars']"/>窗口组栏
+
+	 <append xpath="/windows">
+		<window name="windowGroupBars" controller="PartyWindow" depth="-20">
+
+			<grid name="hud" pos="600,-25" rows="12" cols="1" width="168" cell_width="168" cell_height="40" side="left" repeat_content="true" controller="PartyEntryList" >
+		
+				 
+			</grid>
+		</window>
+	</append>  -->
+	
+	
+	
+	
+
+	
+
+	
+<!-- 	<panel name="equipment" depth="10" pos="256, -89" width="70" height="699" disableautobackground="true" >
+				<grid name="inventory" rows="10" cols="1" cell_width="70" cell_height="70" controller="EquipmentStackGrid" repeat_content="true">
+					<equipment_stack name="0"/>
+				</grid>
+			</panel> -->
+	
+	
+<!-- 		<set xpath="/windows/window[@name='windowCraftingQueue']/rect[@controller='CraftingQueue']/grid[@name='queue']/@rows">3</set>
+	<set xpath="/windows/window[@name='windowCraftingQueue']/rect[@controller='CraftingQueue']/grid[@name='queue']/@cols">5</set>
+	<set xpath="/windows/window[@name='windowCraftingQueue']/rect[@controller='CraftingQueue']/grid[@name='queue']/@pos">-85,0</set>
+	
+	<set xpath="/windows/window[@name='windowCreative']/grid[@name='queue']/@rows">9</set>
+
+	<set xpath="/windows/window[@name='windowLooting']/rect[@name='content']/grid[@name='queue']/@cols">14</set>
+	<set xpath="/windows/window[@name='emptyInfoPanel']/@width">1007</set>
+	<set xpath="/windows/window[@name='emptyInfoPanel']/rect[@name='contentCraftingInfo']/sprite[@name='backgroundMain']/@width">1007</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/@width">1007</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/sprite[@depth='5']/@width">1007</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/rect[@name='searchControls']/@width">852</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/rect[@name='description']/@width">851</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/rect[@name='description']/sprite[@name='backgroundMain']/@width">857</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/rect[@name='description']/rect/label[@name='descriptionText']/@width">844</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/rect[@name='ingredients']/@width">851</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/rect[@name='ingredients']/grid[@controller='IngredientList']/@width">851</set>
+	<set xpath="/windows/window[@name='craftingInfoPanel']/rect[@name='contentCraftingInfo']/rect[@name='ingredients']/grid[@controller='IngredientList']/@cell_width">851</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/@width">1010</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/panel[@name='header']/label[@name='windowName']/@width">902</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/panel[@name='header']/label[@justify='right']/@pos">752,-8</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/panel[@name='header']/sprite[@name='costIcon']/@pos">979,-10</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/sprite[@depth='5']/@width">1007</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@name='searchControls']/@width">852</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@name='searchControls']/sprite[@type='sliced']/@width">853</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,0']/@width">851</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,0']/sprite[@name='backgroundMain']/@width">857</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,0']/label[@name='descriptionText']/@width">844</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/@width">851</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/sprite[@name='backgroundMain']/@width">857</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/@width">857</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,0']/label[@justify='left']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,0']/label[@justify='right']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-33']/label[@justify='left']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-33']/label[@justify='right']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-64']/label[@justify='left']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-64']/label[@justify='right']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-94']/label[@justify='left']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-94']/label[@justify='right']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-127']/label[@justify='left']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-127']/label[@justify='right']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-159']/label[@justify='left']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-159']/label[@justify='right']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-192']/label[@justify='left']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showstats}']/rect[@pos='-3,-192']/label[@justify='right']/@width">834</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@pos='153,-43']/rect[@visible='{showdescription}']/label[@name='descriptionText']/@width">844</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/grid[@name='parts']/@cols">11</set>
+	<set xpath="/windows/window[@name='itemInfoPanel']/rect[@name='contentInfo']/rect[@visible='{iscomparing}']/@width">854</set>
+	<set xpath="/windows/window[@name='buffInfoPanel']/@width">1007</set>
+	<set xpath="/windows/window[@name='buffInfoPanel']/rect[@name='contentBuffInfo']/rect/sprite[@depth='5']/@width">1007</set>
+	<set xpath="/windows/window[@name='buffInfoPanel']/rect[@name='contentBuffInfo']/rect/rect[@name='description']/@width">852</set>
+	<set xpath="/windows/window[@name='buffInfoPanel']/rect[@name='contentBuffInfo']/rect/rect[@depth='1']/sprite[@name='backgroundMain']/@width">857</set>
+	<set xpath="/windows/window[@name='buffInfoPanel']/rect[@name='contentBuffInfo']/rect/rect[@depth='1']/rect/label[@name='descriptionText']/@width">857</set>
+	<remove xpath="/windows/window[@name='windowBackpack']" />
+	<append xpath="/windows">
+		<window name="windowBackpack" width="1008" height="515" panel="Center" controller="BackpackWindow" cursor_area="true" >
+			<panel name="header" height="43" depth="1" backgroundspritename="ui_game_panel_header">
+				<sprite depth="3" name="windowIcon" style="icon32px" pivot="center" pos="21,-21" sprite="ui_game_symbol_backpack" />
+				<label depth="3" name="windowName" pos="42,-6" width="250" height="32" text="INVENTORY" text_key="xuiInventory" font_size="32" />
+				<rect pos="303,0" width="300" controller="ContainerStandardControls">
+					<button depth="3" name="btnClearInventory" sprite="ui_game_symbol_trash" tooltip_key="lblClearInventory" pos="200, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]" visible="{creativewindowopen}" />
+					<button depth="3" name="btnSort"           sprite="ui_game_symbol_sort"  tooltip_key="lblSortContainer"  pos="0, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]" />
+					<combobox name="cbxLockedSlots" type="ComboBoxInt" pos="105, -6" width="140" height="30" value_min="0" value_max="105" value_wrap="true" value_increment="1" tooltip_key="xuiStashLockedSlots" visible="{lootingorvehiclestorage}" />
+					<rect pos="0, 0" visible="{lootingorvehiclestorage}">
+						<button   depth="3" name="btnMoveAll"          sprite="ui_game_symbol_store_all_down"     tooltip_key="lblStashAll"             pos="80, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]" />
+						<button   depth="3" name="btnMoveFillAndSmart" sprite="ui_game_symbol_store_similar_down" tooltip_key="lblStashFillAndSmart" pos="40, -22" style="icon32px, press, hover" pivot="center" sound="[paging_click]" />
+					</rect>
+				</rect>
+				<label depth="2" pos="874,-8" width="100" height="28" text="{currencyamount}" color="[white]" justify="right" />
+	货币	<sprite depth="4" name="costIcon" sprite="ui_game_symbol_coin" size="24,24" pos="979,-10" color="[white]" foregroundlayer="true" />
+			</panel>
+			<panel name="content" width="100%" height="437" depth="0" pos="0,-46" disableautobackground="true">
+					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="606" height="470" color="[black]" type="sliced" fillcenter="false" on_press="true" />
+	<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-1,1" width="1010" height="472" color="0,255,0" type="sliced" fillcenter="false" />	
+
+controller="BackpackWindow"     controller="sliderBar"
+			
+cbx Locked Slots
+cbx锁定插槽		<combobox depth="3" name="cbxLockedSlots"   pos="650,40" width="100" height="30" tooltip_key="xuiStashLockedSlots" type="ComboBoxInt" value_min="0" value_max="45" value_wrap="true" value_increment="1" />
+
+		<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="603" height="52" color="[black]" type="sliced" fillcenter="false"  />
+			
+					<rect pos="100,20" >
+                        移动填充堆栈                             
+	            		<button   depth="3" name="btnMoveFillStacks" sprite="ui_game_symbol_drop"          tooltip_key="lblStashFillStacks"   pos="100, 10" style="icon32px, press, hover" pivot="center" sound="[paging_click]" />
+						<button   depth="3" name="btnMoveSmart"       sprite="ui_game_symbol_drop"          tooltip_key="lblStashSmart"        pos="60, 10" style="icon32px, press, hover" pivot="center" sound="[paging_click]" />
+
+		            </rect>
+库存
+					<grid depth="10" name="inventory" rows="7" cols="15" pos="3,-3" cell_width="67" cell_height="67" controller="Backpack" repeat_content="true" >
+						<backpack_item_stack name="0"/>
+					</grid>
+				</panel>
+		</window> -->
+	
+<!--  <panel name="content"  width="606"height="449" depth="0" pos="0,3" disablefallthrough="true"clipping="3">滑轮
+      <rect name="1" depth="9"controller="slider" pos="0,0"width="200"height="62" >
+		        <rect pos="2,-34" >
+         <sprite name="Bar" controller="sliderBar"depth="1"pos="4,-365"color="[mediumgrey]"width="606"height="20"type="sliced"style="press,scroll" >
+         <sprite name="thumb" controller="sliderthumb"depth="2"pos="0,-20"style=" " > 
+         <grid depth="10" name="inventory" rows="5" cols="18" pos="533,-3" cell_width="-67" cell_height="67" controller="Backpack" repeat_content="true" >
+						<backpack_item_stack name="0"/>
+					</grid>
+	           	</sprite>
+               </rect>
+             </rect>
+			</panel> 
+	 
+					globalopacitymod全局容量模式      （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+			height字体高度  width 字体宽度   depth  深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+				      pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽 
+		背景干线  绿色 边框
+	
+	
+	
+	
+	
+	
+	
+	
+	</append>-->
+	
+	
+	
+	
+	
+	
+	
+	
+</configs>

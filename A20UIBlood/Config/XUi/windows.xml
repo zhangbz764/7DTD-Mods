@@ -1,0 +1,63 @@
+<configs>
+
+	UIUIUIUI-------------------------------------------------------------------------
+	
+		globalopacitymod全局容量模式   color颜色   （切片sliced  填满filled 影响阴影） [FFFC00]颜色黄  font_size  字体大小
+	height字体高度  width 字体宽度   depth  叠加深度    显示size大小第一个影响左右宽度   第二个影响上下宽度   
+   pos代表位置 位置569,36   900,24  第一个数值正数向右，第二个负值 向下，正数向上 阴影大小  大右 小左边  1长  2宽 
+type 类型   sliced切片  pivot支点  topleft左上角
+	     [white][白色]        justify证明正当"  left左边   right右边   center居中
+
+	
+		<remove xpath="/windows/window[@name='windowTargetBar']/rect"/>
+	<append xpath="/windows/window[@name='windowTargetBar']">
+		<window name="windowTargetBar"  pos="-300,430" controller="TargetBar" visibility="always"> 
+外框	<rect pos="0,0" type="center"  width="596" height="30"  visible="{visible}" >
+			<sprite depth="1" name="border" color="0,0,0,100" type="sliced" width="496" globalopacity="true"/>
+血的颜色	<filledsprite depth="2" name="BarContent" type="filled" color="200,0,0,180" width="596" fill="{fill}" globalopacity="true"/>
+ [DECEA3]{currentwithmax}" height="30"/>
+名字	
+血量	<label depth="3" name="TextContentHealth" pos="-5,-4" font_size="25" color="[white]" justify="center" pivot="topleft" text="生命值：{currentwithmax}" height="40"/>
+底框	<sprite depth="0" name="background" color="0,0,0,220" pos="-3,3" size="602, 35" globalopacitymod="0" type="sliced" />
+
+
+
+justify="center"   颜色type="filled"
+
+
+		</rect>
+	外框<rect pos="0,3" type="center"  width="380" height="42"  visible="{visible}" >
+    
+
+
+<filledsprite name="BarContent" depth="2" pos="130,-38" size="410, 40" pivot="topleft" atlas="uiAtlas" type="filled" color="86,86,86" width="350" fill="1" globalopacitymod="0" />
+
+
+名字<label depth="3" name="TextContentName" pos="120,-44" font_size="35" color="[white]" justify="center" pivot="topleft" text="[D4F1C9]{name}" height="32"/>[806DE]
+
+
+
+<label depth="2" pos="49,-8" width="360" height="26" text="{buffname|once}  [00FFFF]{buffdisplayinfo}[-]" font_size="22" pivot="topleft" />
+
+
+
+
+底框<sprite depth="0" name="background" pos="126,-35" pivot="topleft" justify="center" color="0,0,0,220" size="359, 46" globalopacitymod="0"	 type="sliced" />
+		
+
+	
+		
+		
+		</rect>
+		
+	
+
+--
+	</window>
+ </append> 
+ 
+ 
+ 
+	
+	
+</configs>

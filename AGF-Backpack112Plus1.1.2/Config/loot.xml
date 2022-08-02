@@ -1,0 +1,13 @@
+<AGFBackpack>
+	
+
+	<!--Large enough player backpack when players die-->
+	<set xpath="/lootcontainers/lootcontainer[@name='playerBackpack']/@size">12,12</set>
+
+	<!--Larger Storage Options-->
+	<append xpath="/lootcontainers">
+		<lootcontainer name="agfStorageLarge" count="0" size="14,12" sound_open="UseActions/open_chest" sound_close="UseActions/close_chest"></lootcontainer>
+	</append>
+
+	
+</AGFBackpack>

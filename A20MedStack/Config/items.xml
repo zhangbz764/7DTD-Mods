@@ -1,0 +1,6 @@
+<items>
+
+	<set xpath="/items/item[starts-with(@name, 'medical')]/property[@name='Stacknumber']/@value">100</set>
+	<set xpath="/items/item[starts-with(@name, 'drug')]/property[@name='Stacknumber']/@value">50</set>
+
+</items>

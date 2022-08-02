@@ -1,0 +1,87 @@
+<configs>
+	<append xpath="/recipes">
+
+		<recipe name="resourceAcid" count="1" craft_time="66" >
+			<ingredient name="resourcePaper" count="6"/>
+			<ingredient name="resourceYuccaFibers" count="6"/>
+			<ingredient name="resourcePotassiumNitratePowder" count="666"/>
+			<ingredient name="drinkJarEmpty" count="6"/>
+		</recipe>
+
+		<recipe name="resourceMechanicalParts" count="1" craft_time="1" >
+			<ingredient name="resourceElectricParts" count="1"/>
+			<ingredient name="resourceMetalPipe" count="1"/>
+		</recipe>
+
+		<recipe name="resourceElectricParts" count="1" craft_time="1" >
+			<ingredient name="resourceMechanicalParts" count="1"/>
+			<ingredient name="resourceMetalPipe" count="1"/>
+		</recipe>
+
+		<recipe name="drinkCanMegaCrush" count="1" craft_time="180" >
+			<ingredient name="drinkJarRedTea" count="2"/>
+			<ingredient name="drinkJarGoldenRodTea" count="2"/>
+			<ingredient name="drugPainkillers" count="2"/>
+			<ingredient name="resourceAcid" count="1"/>
+			<ingredient name="drinkCanEmpty" count="1"/>
+		</recipe>
+
+		<recipe name="drinkCanMegaCrush" count="1" craft_time="30" craft_area="campfire" craft_tool="toolBeaker" >
+			<ingredient name="resourceCropChrysanthemumPlant" count="3"/>
+			<ingredient name="resourceCropGoldenrodPlant" count="3"/>
+			<ingredient name="drugPainkillers" count="1"/>
+			<ingredient name="resourceAcid" count="1"/>
+			<ingredient name="drinkCanEmpty" count="1"/>
+		</recipe>
+
+		<recipe name="resourcePaper" count="5" craft_time="20" >
+			<ingredient name="resourceYuccaFibers" count="10"/>
+			<ingredient name="drinkJarBoiledWater" count="1"/>
+		</recipe>
+
+		<recipe name="toolBeaker" count="1" craft_time="300" craft_area="workbench" >
+			<ingredient name="drinkJarEmpty" count="10"/>
+			<ingredient name="resourceAcid" count="1"/>
+			<ingredient name="casinoCoin" count="600"/>
+		</recipe>
+
+		<recipe name="resourceSewingKit" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceCropCottonPlant" count="10"/>
+			<ingredient name="resourceForgedIron" count="1"/>
+		</recipe>
+
+		<recipe name="drugVitamins" count="1" craft_area="campfire" craft_tool="toolCookingPot">
+			<ingredient name="foodCropBlueberries" count="3"/>
+			<ingredient name="foodCropPumpkin" count="2"/>
+			<ingredient name="drinkJarBoiledWater" count="1"/>
+		</recipe>
+
+		<recipe name="drugVitamins" count="1" craft_area="chemistryStation">
+			<ingredient name="foodCropBlueberries" count="1"/>
+			<ingredient name="foodCropPumpkin" count="1"/>
+			<ingredient name="drinkJarBoiledWater" count="1"/>
+		</recipe>
+
+		<recipe name="drugPainkillers" count="1" craft_area="campfire" craft_tool="toolCookingPot">
+			<ingredient name="resourceCropCoffeeBeans" count="3"/>
+			<ingredient name="resourcePotassiumNitratePowder" count="30"/>
+			<ingredient name="drinkJarBoiledWater" count="1"/>
+		</recipe>
+
+		<recipe name="drugPainkillers" count="1" craft_area="chemistryStation">
+			<ingredient name="resourceCropCoffeeBeans" count="1"/>
+			<ingredient name="resourcePotassiumNitratePowder" count="10"/>
+			<ingredient name="drinkJarBoiledWater" count="1"/>
+		</recipe>
+
+		<recipe name="resourceGunPowder" count="1" craft_area="chemistryStation" craft_tool="toolBeaker">
+			<ingredient name="resourcePotassiumNitratePowder" count="1"/>
+			<ingredient name="resourceWood" count="5"/>
+		</recipe>
+
+		<recipe name="toolBeaker" count="1" craft_area="forge" material_based="true">
+			<ingredient name="unit_glass" count="200"/>
+			<ingredient name="unit_clay" count="50"/>
+		</recipe>
+	</append>
+</configs>

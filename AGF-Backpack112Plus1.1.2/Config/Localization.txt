@@ -1,0 +1,9 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
+cmtSecureStorageChestLarge,,,,,"Large Secure Chest [ddcdfa](168)",,"","","","","","","","","","","","",""
+cntStorageChestLarge,,,,,"Large Insecure Chest [ddcdfa](168)",,"","","","","","","","","","","","",""
+cntStorageGenericLarge,,,,,"Large Secure Storage [ddcdfa](168)",,"","","","","","","","","","","","",""
+cntStorageGenericInsecureLarge,,,,,"Large Insecure Storage [ddcdfa](168)",,"","","","","","","","","","","","",""
+cntStorageGenericSignedLarge,,,,,"Large Secure Writable Storage [ddcdfa](168)",,"","","","","","","","","","","","",""
+cntStorageGenericSignedInsecureLarge,,,,,"Large Insecure Writable Storage [ddcdfa](168)",,"","","","","","","","","","","","",""
+storageLargeVariantHelper,,,,,"Large Reinforced Storage Containers",,"","","","","","","","","","","","",""
+storageLargeVariantHelperDesc,,,,,"These storage containers have double hit points of their regular counterparts and holds 168 items. Remember to select shape options to view the different storages.",,"","","","","","","","","","","","",""

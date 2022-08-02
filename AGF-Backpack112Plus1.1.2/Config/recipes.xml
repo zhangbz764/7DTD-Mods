@@ -1,0 +1,13 @@
+<AGFBackpack>
+
+<append xpath="/recipes">
+	<recipe name="storageLargeVariantHelper" count="1">
+		<ingredient name="resourceNail" count="25"/>
+		<ingredient name="resourceWood" count="50"/>
+	</recipe>
+</append>
+
+		
+</AGFBackpack>
+
+

@@ -1,0 +1,5 @@
+<anan>
+
+	<set xpath="/lootcontainers/lootcontainer[@id='2']/@size">10,14</set>10,14
+ 
+</anan>

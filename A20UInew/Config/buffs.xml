@@ -1,0 +1,177 @@
+<configs>
+
+
+<!-- 
+背包
+	<set xpath="/buffs/buff[@name='god']/effect_group/passive_effect[@name='CarryCapacity']/@value">105</set>
+	<set xpath="/buffs/buff[@name='buffDrugSteroids']/effect_group/passive_effect[@name='CarryCapacity']/@value">105</set> -->
+
+
+
+添加新的buff来追踪击杀
+
+	 <append xpath="/buffs/buff[@name='buffStatusCheck01']">
+
+
+	<effect_group>
+		
+		
+		
+			<triggered_effect trigger="onSelfEnteredGame" action="AddBuff" target="self" buff="buff玩家等级"/>
+			<triggered_effect trigger="onSelfRespawn" action="AddBuff" target="self" buff="buff玩家等级"/>
+			<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buff玩家等级"/>
+	
+		</effect_group> 
+	
+	</append>
+
+
+
+
+
+	<append xpath="/buffs">
+	
+
+			
+		
+	
+	<buff name="buff玩家等级" name_key="[FF0000]玩家等级" description_key="你当前等级为{cvar(WJDJTS:0)}级 " tooltip_key="你当前等级为{cvar(WJDJTS:0)}级" hidden="true"  icon_blink="true" remove_on_death="false" icon="ui_game_symbol_coin" icon_color="4,199,231">
+			<display_value value="WJDJTS"/>
+			
+				<display_value_key value="[00FFAC]玩家[-]:[FED934]{0}[-][FED934]等级[-]"/>
+			<duration value="0"/>
+			<stack_type value="ignore"/>
+			
+				<update_rate value=".5"/>
+			
+
+			
+			<effect_group>
+			
+			
+
+			
+			
+			
+		<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="WJDJTS" operation="set" value="@$LastPlayerLevel">
+		
+<!-- 		<requirement name="PlayerLevel" target="self" operation="Equals" addvalue="1"/> -->
+			</triggered_effect> 	
+	
+<!-- 		<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$LastPlayerLevel" operation="add" value="1">
+				<requirement name="PlayerLevel" operation="GT" value="@$LastPlayerLevel"/>
+			</triggered_effect> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</effect_group> 
+			
+
+			
+			</buff>-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<buff name="buffScoringEvent" hidden="true" remove_on_death="false">
+			<stack_type value="ignore"/>
+
+			<effect_group name="Check Entity Type Killed">
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="zombiekill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="zombie"/>
+					<requirement name="!EntityTagCompare" target="other" tags="zombiebear"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="zombiebearkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="zombiebear"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="vulturekill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="vulture"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="dogkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="dog"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="snakekill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="snake"/>
+				</triggered_effect>
+				  
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="boarkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="boar"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="bearkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="bear"/>
+					<requirement name="!EntityTagCompare" target="other" tags="zombiebear"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="wolfkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="wolf"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="lionkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="mountainlion"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="coyotekill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="coyote"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="deerkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="deer"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="rabbitkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="rabbit"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="chickenkill" operation="add" value="1">
+					<requirement name="EntityTagCompare" target="other" tags="chicken"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="Check Weapon Type Held">
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="pistolkill" operation="add" value="1">
+					<requirement name="HoldingItemHasTags" tags="perkGunslinger"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="shotgunkill" operation="add" value="1">
+					<requirement name="HoldingItemHasTags" tags="perkBoomstick"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="riflekill" operation="add" value="1">
+					<requirement name="HoldingItemHasTags" tags="perkDeadEye"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="machinegunkill" operation="add" value="1">
+					<requirement name="HoldingItemHasTags" tags="perkMachineGunner"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="explosiveskill" operation="add" value="1">
+					<requirement name="HoldingItemHasTags" tags="perkDemolitionsExpert"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar="headshotkill" operation="add" value="1">
+					<requirement name="HitLocation" body_parts="Head"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+	</append>
+</configs>

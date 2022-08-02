@@ -1,0 +1,71 @@
+<configs>
+对齐组件
+<!-- <set xpath="/xui/ruleset[@name='default']/@scale">1.1</set>
+	<set xpath="/xui/ruleset[@name='default']/@stackpanel_scale">1</set> -->
+	
+	<!-- <insertAfter xpath="/xui/ruleset/window_group[@name='toolbelt']/window[@name='HUDLeftStatBars']">
+		<window name="AnAnBuffLeft" anchor="LeftBottom" />
+		             一个Buff 左               左下角   
+		
+	</insertAfter> -->
+                                                       工具带                   左统计条
+	<insertAfter xpath="/xui/ruleset/window_group[@name='toolbelt']/window[@name='HUDLeftStatBars']">
+		<window name="BUFFwindow" anchor="LeftBottom" />
+		                                   左下角
+	</insertAfter> -->
+ -->
+                                规则集        违约                          罗盘
+  <append xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
+        <window name="alignments" anchor="LeftTop"/>
+		                比对             左上角
+    </append> -->
+ 
+ 玩家信息组件
+    <append xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
+        <window name="playerInfo" anchor="CenterTop"/>
+    </append>
+
+    <setattribute xpath="/xui/ruleset[@name='default']/window_group[@name='compass']/window[@name='windowCompass']" name="anchor">CenterTop</setattribute>
+
+  水平显示和XP栏
+    <append xpath="/xui/ruleset[@name='default']/window_group[@name='toolbelt']">
+        <window name="fpsHUDlevelXP" anchor="LeftTop"/>
+    </append>
+
+
+  白天和时间显示HUD
+    <append xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
+        <window name="fpsHUDdayTimeFrame" anchor="LeftTop"/>
+    </append>
+
+
+  时间显示界面
+    <append xpath="/xui/ruleset[@name='default']/window_group[@name='map']">
+        <window name="fpsHUDtimeFrame" anchor="LeftTop"/>
+    </append>
+
+ 温度和高度显示
+    <append xpath="/xui/ruleset[@name='default']/window_group[@name='compass']">
+        <window name="fpsHUDenvironment" anchor="LeftTop"/>
+    </append> --> 
+	
+<!-- 	背包——————————————————————————————————————————————————————————————————————
+		<set xpath="/xui/ruleset[@name='default']/@scale">1.1</set>
+	<set xpath="/xui/ruleset[@name='default']/@stackpanel_scale">1</set>
+ -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</configs>

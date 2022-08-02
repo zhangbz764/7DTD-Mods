@@ -1,0 +1,35 @@
+<AGF-BackpackPlus>
+	<append xpath="/controls">
+	
+		<backpack_item_stackAGF controller="ItemStack" on_scroll="false" allow_dropping="true" prefix_id="false" show_favorites="false">
+			<rect controller="${controller}" style="itemStackAGF, hover" collider_scale="1.0" on_scroll="${on_scroll}" allow_dropping="${allow_dropping}" prefix_id="${prefix_id}" tooltip="{tooltip}" >
+			<!--What you created in styles.xml, replace the itemStack name with it.-->
+			
+			<!--Below for many parts for width/height, whatever you subtracted from 67 to make your new cells, is how much you subtract in most of these.
+			    Also, positioning will need to be adjusted for some as well.-->
+			
+				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="-3,3" width="50" height="50" color="[black]" type="sliced" fillcenter="false" />
+				<sprite depth="3" name="background" sprite="menu_empty3px" width="45" height="45" color="{selectionbordercolor}" type="sliced" globalopacity="true" fillcenter="false"/>
+				<sprite depth="2" name="highlightOverlay" width="44" height="44" color="{backgroundcolor}" pos="0,0" type="sliced" globalopacity="true"/>
+
+				<texture depth="3" name="backgroundTexture" material="Materials/Transparent Colored" size="45,45" globalopacity="true"/>
+				<sprite depth="6" name="itemIcon" width="42" height="42" atlas="ItemIconAtlas" sprite="{itemicon}" pos="23,-23" pivot="center" foregroundlayer="true" color="{iconcolor}" />
+																							<!--for position, first number is half of backgroundMain width.-->
+																							<!--for position, second number is about -5 of first.-->
+				
+				<sprite depth="8" name="lockTypeIcon" width="16" height="16" sprite="{locktypeicon}" pos="2,-2" foregroundlayer="true"/>
+				<sprite depth="8" name="itemtypeicon" width="20" height="20" sprite="ui_game_symbol_{itemtypeicon}" pos="2,-2" foregroundlayer="true" visible="{hasitemtypeicon}" color="{itemtypeicontint}" />
+
+				<sprite depth="3" name="durabilityBackground" width="45" height="8" sprite="menu_empty3px" color="[darkGrey]" type="sliced" pos="1, -41" foregroundlayer="true" visible="{hasdurability}" />
+				<filledsprite depth="4" name="durability" width="45" height="8" sprite="menu_empty2px" color="{durabilitycolor}" fill="{durabilityfill}" type="filled" pos="1, -41" foregroundlayer="true" visible="{hasdurability}" />
+
+				<sprite depth="5" name="disabledOverlay" width="45" height="45" color="[darkGrey_half_alpha]" pos="1,-1" type="sliced" visible="false"/>
+
+				<label depth="7" name="stackValue" pos="0,-34" width="48" height="20" text="{itemcount}" font_size="16" effect="outline" justify="{#hasdurability ? 'Center' : 'Right'}" />
+				<label depth="7" name="timer" pos="35,-33" width="46" height="14" font_size="14" justify="center" pivot="center" effect="outline" color="[beige]"/>
+				<sprite depth="9" name="cancel" sprite="ui_game_symbol_x" width="49" height="49" color="255,0,0,255" type="sliced" visible="false" foregroundlayer="true"/>
+				<sprite depth="13" name="assembleIcon" size="35,35" sprite="{stacklockicon}" color="{stacklockcolor}" visible="{isassemblelocked}" pos="14,-14" foregroundlayer="true"/>
+			</rect>
+		</backpack_item_stackAGF>
+	</append>
+</AGF-BackpackPlus>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+    <ModInfo>
+        <Name value="100 Medicine Stack Limit" />
+        <Description value="Increase medicine stack limit size" />
+        <Author value="Agent14zbz" />
+        <Version value="A20(b238)" />
+    </ModInfo>
+</xml>
+
